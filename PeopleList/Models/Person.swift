@@ -7,9 +7,7 @@
 
 import Foundation
 
-struct Person: Identifiable {
-    var id = UUID()
+struct Person {
     var name: String
     var age: Int
-    // Add more properties as needed
 }

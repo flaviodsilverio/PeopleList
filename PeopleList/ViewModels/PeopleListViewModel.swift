@@ -7,9 +7,13 @@
 
 import Foundation
 
-class PeopleListViewModel {
-    var people: [Person] = []
+class PeopleListViewModel: ObservableObject {
+    @Published var people: [Person] = []
 
+    init(people: [Person] = PeopleListViewModel.randomPeople()) {
+        self.people = people
+    }
+    
     var numberOfPeople: Int {
         return people.count
     }
@@ -23,11 +27,12 @@ class PeopleListViewModel {
     }
 
     func removePerson(at index: Int) {
+        print("removed")
         people.remove(at: index)
     }
     
-    static func filledWithRandoms() -> PeopleListViewModel {
-        var vm = PeopleListViewModel()
+    static func randomPeople() -> [Person] {
+        var people = [Person]()
         
         let firstNames = ["James", "John", "Robert", "Michael", "William", "David", "Richard", "Joseph", "Charles", "Thomas", "Mary", "Patricia", "Jennifer", "Linda", "Elizabeth", "Barbara", "Susan", "Jessica", "Sarah", "Karen"]
         
@@ -37,9 +42,9 @@ class PeopleListViewModel {
             let firstNameIndex = Int.random(in: 0...firstNames.count - 1)
             let lastNameIndex = Int.random(in: 0...lastNames.count - 1)
             let age = Int.random(in: 1...100)
-            vm.addPerson(Person(name: "\(firstNames[firstNameIndex]) \(lastNames[lastNameIndex])", age: age))
-        } while(vm.people.count < 1000)
+            people.append(Person(name: "\(firstNames[firstNameIndex]) \(lastNames[lastNameIndex])", age: age))
+        } while(people.count < 1000)
         
-        return vm
+        return people
     }
 }

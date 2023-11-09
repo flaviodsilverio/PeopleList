@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    let viewModel = PeopleListViewModel.filledWithRandoms()
+    @ObservedObject var viewModel = PeopleListViewModel()
 
     var body: some View {
-        List(viewModel.people) { person in
-          Text("\(person.name) - \(person.age)")
+        List(viewModel.people.indices, id: \.self) { index in
+            VStack(alignment: .leading, content:  {
+                HStack {
+                    Text("Name: \(viewModel.person(at: index)?.name ?? "")")
+                    Spacer()
+                    Button {
+                        viewModel.removePerson(at: index)
+                    } label: {
+                        Image(systemName: "xmark.circle" ).accentColor(.red)
+                    }.buttonStyle(.borderless)
+
+                }
+                Text("Age: \(viewModel.person(at: index)?.age ?? 0)")
+            })
         }
     }
 }
