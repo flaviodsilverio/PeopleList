@@ -27,10 +27,11 @@ class PeopleListViewModel: ObservableObject {
     }
 
     func removePerson(at index: Int) {
-        print("removed")
-        people.remove(at: index)
+        people.remove(at: index - 1)
     }
-    
+}
+
+extension PeopleListViewModel {
     static func randomPeople() -> [Person] {
         var people = [Person]()
         
