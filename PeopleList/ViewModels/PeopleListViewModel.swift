@@ -7,8 +7,8 @@
 
 import Foundation
 
-class PeopleListViewModel: ObservableObject {
-    @Published var people: [Person] = []
+final class PeopleListViewModel: ObservableObject {
+    @Published var people: [Person]
 
     init(people: [Person] = PeopleListViewModel.randomPeople()) {
         self.people = people
