@@ -27,7 +27,7 @@ final class PeopleListViewModel: ObservableObject {
     }
 
     func removePerson(at index: Int) {
-        people.remove(at: index - 1)
+        people.remove(at: index)
     }
 }
 
