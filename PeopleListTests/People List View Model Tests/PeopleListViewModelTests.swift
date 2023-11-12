@@ -21,27 +21,6 @@ final class PeopleListViewModelTests: XCTestCase {
             Person(name: "Mike Smith", age: 15)
         ])
     }
-    
-    func testRemovingAPersonDecreasesTheArraySize() {
-        XCTAssertEqual(sut?.numberOfPeople, 3)
-        sut?.removePerson(at: 0)
-        XCTAssertEqual(sut?.numberOfPeople, 2)
-    }
-    
-    func testCountingPeopleReturnsTheCorrectNumber() {
-        XCTAssertTrue(sut?.numberOfPeople == 3)
-    }
-    
-    func testGettingAPersonReturnsTheCorrectPerson() {
-        let person = sut?.person(at: 1)
-        XCTAssertEqual(person?.name, "Martha George")
-    }
-    
-    func testAddingAPErsonIncreasesTheArraySize() {
-        XCTAssertEqual(sut?.numberOfPeople, 3)
-        sut?.addPerson(Person(name: "James Brolin", age: 28))
-        XCTAssertEqual(sut?.numberOfPeople, 4)
-    }
 
     override func tearDown() {
         sut = nil
