@@ -22,7 +22,7 @@ final class PeopleListViewModelTests: XCTestCase {
         ])
     }
     
-    func testRemovingAPersonDecreasesTheArraySize() {
+    func testRemovingAPersonDecreasesTheAmountOfPeople() {
         XCTAssertEqual(sut?.numberOfPeople, 3)
         sut?.removePerson(at: 0)
         XCTAssertEqual(sut?.numberOfPeople, 2)
@@ -37,7 +37,7 @@ final class PeopleListViewModelTests: XCTestCase {
         XCTAssertEqual(person?.name, "Martha George")
     }
     
-    func testAddingAPErsonIncreasesTheArraySize() {
+    func testAddingAPersonIncreasesTheAmountOfPeople() {
         XCTAssertEqual(sut?.numberOfPeople, 3)
         sut?.addPerson(Person(name: "James Brolin", age: 28))
         XCTAssertEqual(sut?.numberOfPeople, 4)
